@@ -9,7 +9,8 @@ import { FeatureCard } from "@/components/site/FeatureCard";
 import { FAQ } from "@/components/site/FAQ";
 import { CTABand } from "@/components/site/CTABand";
 import { CTALink } from "@/components/site/Button";
-import { mailto, tel, whatsapp, site } from "@/lib/site-config";
+import { SectionNav } from "@/components/site/SectionNav";
+import { mailto, tel, whatsapp, site, pageSections } from "@/lib/site-config";
 
 const faqItems = [
   { q: "When do admissions open at Vidvas School?", a: "Admissions for the 2026–27 academic year are open now. Early applications are recommended as seats fill quickly." },
@@ -55,7 +56,9 @@ function AdmissionsPage() {
         imageAlt="Vidvas School campus"
       />
 
-      <Section>
+      <SectionNav items={pageSections["/admissions"]} />
+
+      <Section id="why">
         <Reveal>
           <SectionHeading eyebrow="Why Vidvas" title="Six reasons families choose us." />
         </Reveal>
@@ -75,7 +78,7 @@ function AdmissionsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="eligibility" className="bg-surface">
         <Reveal>
           <SectionHeading eyebrow="Eligibility" title="Age criteria by class." intro="As on 31st May of the admission year." />
         </Reveal>
@@ -110,7 +113,7 @@ function AdmissionsPage() {
         </Reveal>
       </Section>
 
-      <Section>
+      <Section id="documents">
         <Reveal>
           <SectionHeading eyebrow="Documents Required" title="A short, simple checklist." />
         </Reveal>
@@ -133,7 +136,7 @@ function AdmissionsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="process" className="bg-surface">
         <Reveal>
           <SectionHeading eyebrow="Admission Process" title="Four simple steps to your seat." />
         </Reveal>
@@ -158,7 +161,7 @@ function AdmissionsPage() {
         </ol>
       </Section>
 
-      <Section>
+      <Section id="visit">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <Reveal variant="left">
             <SectionHeading eyebrow="Campus Visit" title="The best way to know Vidvas is to walk through it." intro="Book a guided tour at your convenience. Mornings and weekends are popular slots." />
@@ -193,7 +196,7 @@ function AdmissionsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="faq" className="bg-surface">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <Reveal><SectionHeading eyebrow="FAQ" title="Admission questions, answered." /></Reveal>
           <Reveal delay={100}><FAQ items={faqItems} /></Reveal>
