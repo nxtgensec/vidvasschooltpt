@@ -14,6 +14,8 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { CTABand } from "@/components/site/CTABand";
+import { SectionNav } from "@/components/site/SectionNav";
+import { pageSections } from "@/lib/site-config";
 
 export const Route = createFileRoute("/campus-life")({
   head: () => ({
@@ -58,7 +60,9 @@ function CampusLifePage() {
         imageAlt="Students performing at Vidvas"
       />
 
-      <Section>
+      <SectionNav items={pageSections["/campus-life"]} />
+
+      <Section id="facilities">
         <Reveal><SectionHeading eyebrow="Facilities" title="Built for every kind of learner." /></Reveal>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {facilities.map((f, i) => (
@@ -77,7 +81,7 @@ function CampusLifePage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="activities" className="bg-surface">
         <Reveal><SectionHeading eyebrow="Activities" title="A world of clubs and disciplines." /></Reveal>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {activities.map((a, i) => (
@@ -86,7 +90,7 @@ function CampusLifePage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="events">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal variant="left">
             <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated">
@@ -109,7 +113,7 @@ function CampusLifePage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="leadership" className="bg-surface">
         <Reveal><SectionHeading eyebrow="Student Leadership" title="Voices, choices, responsibility." intro="A student council elected each year leads events, peer mentorship and community service." /></Reveal>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
@@ -122,7 +126,7 @@ function CampusLifePage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="gallery">
         <Reveal>
           <SectionHeading eyebrow="Gallery" title="See campus life in pictures." intro="Browse a curated set of moments from across our campus." />
         </Reveal>

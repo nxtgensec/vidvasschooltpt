@@ -10,6 +10,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { StatCounter } from "@/components/site/StatCounter";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { CTABand } from "@/components/site/CTABand";
+import { SectionNav } from "@/components/site/SectionNav";
+import { pageSections } from "@/lib/site-config";
 
 export const Route = createFileRoute("/achievements")({
   head: () => ({
@@ -36,7 +38,9 @@ function AchievementsPage() {
         imageAlt="Cultural performance at Vidvas School"
       />
 
-      <section className="border-y border-border bg-background">
+      <SectionNav items={pageSections["/achievements"]} />
+
+      <section id="stats" className="border-y border-border bg-background">
         <div className="container-page grid grid-cols-2 gap-8 py-12 md:grid-cols-4 md:py-16">
           {[
             { value: 98, suffix: "%", label: "Class X distinctions" },
@@ -49,7 +53,7 @@ function AchievementsPage() {
         </div>
       </section>
 
-      <Section>
+      <Section id="academic">
         <Reveal>
           <SectionHeading eyebrow="Academic Excellence" title="Where understanding turns into results." intro="Consistent board performance, with students placed in top engineering, medical and arts colleges." />
         </Reveal>
@@ -64,7 +68,7 @@ function AchievementsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="sports" className="bg-surface">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal variant="left">
             <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated">
@@ -87,7 +91,7 @@ function AchievementsPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="cultural">
         <Reveal>
           <SectionHeading eyebrow="Cultural & Tech" title="Beyond textbooks, students shine in art and innovation." />
         </Reveal>
@@ -102,7 +106,7 @@ function AchievementsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="stories" className="bg-surface">
         <Reveal>
           <SectionHeading eyebrow="Student Stories" title="In their own words." />
         </Reveal>
@@ -123,7 +127,7 @@ function AchievementsPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="milestones">
         <Reveal>
           <SectionHeading eyebrow="Milestones" title="The Vidvas timeline." />
         </Reveal>

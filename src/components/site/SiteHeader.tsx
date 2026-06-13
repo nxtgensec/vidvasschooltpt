@@ -1,8 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { nav, site } from "@/lib/site-config";
+import { nav } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { Logo } from "./Logo";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,21 +29,18 @@ export function SiteHeader() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
           ? "border-b border-border/60 bg-background/85 backdrop-blur-xl shadow-soft"
-          : "bg-transparent",
+          : "bg-background/70 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0",
       )}
       onMouseLeave={() => setOpenMenu(null)}
     >
-      <div className="container-page flex h-[72px] items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-2.5">
-          <span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground">
-            <span className="font-serif text-lg leading-none">V</span>
-          </span>
-          <span className="font-serif text-xl text-navy">{site.name.replace(" School", "")}</span>
-        </Link>
+      <div className="container-page flex h-16 items-center justify-between gap-6 md:h-[72px]">
+        <Logo />
 
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => {
-            const active = pathname === item.to || (item.to !== "/" && pathname.startsWith(item.to));
+            const active =
+              pathname === item.to ||
+              (item.to !== "/" && pathname.startsWith(item.to));
             return (
               <div
                 key={item.label}
@@ -61,7 +59,7 @@ export function SiteHeader() {
                 {item.menu && openMenu === item.label && (
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
                     <div
-                      className="w-[360px] origin-top rounded-3xl border border-border bg-background p-3 shadow-elevated"
+                      className="w-[380px] origin-top rounded-3xl border border-border bg-background p-3 shadow-elevated"
                       style={{ animation: "scale-in 250ms ease-out" }}
                     >
                       <div className="grid gap-1">
@@ -69,12 +67,15 @@ export function SiteHeader() {
                           <Link
                             key={sub.label}
                             to={item.to}
+                            hash={sub.hash}
                             className="group flex flex-col gap-0.5 rounded-2xl px-4 py-3 transition-colors hover:bg-surface"
                           >
                             <span className="text-sm font-semibold text-navy group-hover:text-primary">
                               {sub.label}
                             </span>
-                            <span className="text-xs text-muted-foreground">{sub.desc}</span>
+                            <span className="text-xs text-muted-foreground">
+                              {sub.desc}
+                            </span>
                           </Link>
                         ))}
                       </div>
@@ -98,7 +99,7 @@ export function SiteHeader() {
             type="button"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((v) => !v)}
-            className="grid size-11 place-items-center rounded-full border border-border bg-background lg:hidden"
+            className="grid size-10 place-items-center rounded-full border border-border bg-background lg:hidden"
           >
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -106,16 +107,31 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="max-h-[calc(100dvh-64px)] overflow-y-auto border-t border-border bg-background lg:hidden">
           <div className="container-page flex flex-col gap-1 py-4">
             {nav.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className="rounded-2xl px-4 py-3 text-base font-medium text-navy hover:bg-surface"
-              >
-                {item.label}
-              </Link>
+              <div key={item.label} className="flex flex-col">
+                <Link
+                  to={item.to}
+                  className="rounded-2xl px-4 py-3 text-base font-medium text-navy hover:bg-surface"
+                >
+                  {item.label}
+                </Link>
+                {item.menu && (
+                  <div className="ml-4 flex flex-col gap-0.5 border-l border-border pl-3">
+                    {item.menu.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        to={item.to}
+                        hash={sub.hash}
+                        className="rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-surface hover:text-primary"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               to="/admissions"

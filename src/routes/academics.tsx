@@ -12,6 +12,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { FAQ } from "@/components/site/FAQ";
 import { CTABand } from "@/components/site/CTABand";
+import { SectionNav } from "@/components/site/SectionNav";
+import { pageSections } from "@/lib/site-config";
 
 const faqItems = [
   { q: "What curriculum does Vidvas School follow?", a: "Vidvas follows the Andhra Pradesh State Board curriculum in English medium, taught with a concept-first, inquiry-led approach." },
@@ -59,7 +61,9 @@ function AcademicsPage() {
         imageAlt="Vidvas School smart classroom"
       />
 
-      <Section>
+      <SectionNav items={pageSections["/academics"]} />
+
+      <Section id="philosophy">
         <Reveal>
           <SectionHeading
             align="center"
@@ -81,7 +85,7 @@ function AcademicsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="journey" className="bg-surface">
         <Reveal>
           <SectionHeading eyebrow="Academic Journey" title="A continuous arc, designed for every stage." />
         </Reveal>
@@ -103,7 +107,7 @@ function AcademicsPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="curriculum">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal variant="left">
             <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated">
@@ -131,7 +135,7 @@ function AcademicsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="methodology" className="bg-surface">
         <Reveal>
           <SectionHeading eyebrow="Teaching Methodology" title="Six classroom moves you'll see at Vidvas." />
         </Reveal>
@@ -151,7 +155,7 @@ function AcademicsPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="programs">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal variant="left">
             <SectionHeading eyebrow="Special Programs" title="Future-ready skills, woven into the timetable." intro="Robotics, coding and design are not extras at Vidvas — they're part of how children learn to think." />
@@ -177,7 +181,7 @@ function AcademicsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section id="faculty" className="bg-surface">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal variant="left">
             <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated">
@@ -203,7 +207,7 @@ function AcademicsPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="faq">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <Reveal>
             <SectionHeading eyebrow="FAQ" title="Academic questions, answered." />

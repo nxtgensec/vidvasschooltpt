@@ -30,7 +30,8 @@ import { FeatureCard } from "@/components/site/FeatureCard";
 import { CTABand } from "@/components/site/CTABand";
 import { FAQ } from "@/components/site/FAQ";
 import { CTALink } from "@/components/site/Button";
-import { whatsapp } from "@/lib/site-config";
+import { SectionNav } from "@/components/site/SectionNav";
+import { pageSections, whatsapp } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -118,7 +119,7 @@ function Hero() {
 
         <Reveal variant="scale" delay={400}>
           <div className="relative">
-            <div className="image-hover aspect-[4/5] rounded-[2rem] shadow-elevated">
+            <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated sm:aspect-[16/10] lg:aspect-[4/5]">
               <img
                 src={heroCampus}
                 alt="Vidvas School campus with students walking at golden hour"
@@ -178,7 +179,7 @@ function StatsStrip() {
 
 function About() {
   return (
-    <Section>
+    <Section id="about">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal variant="left">
           <div className="image-hover aspect-[4/5] rounded-[2rem] shadow-elevated">
@@ -217,7 +218,7 @@ function About() {
 
 function VisionMission() {
   return (
-    <Section className="bg-surface">
+    <Section id="vision" className="bg-surface">
       <Reveal>
         <SectionHeading
           align="center"
@@ -260,7 +261,7 @@ function Leadership() {
     { img: leader2, name: "Mr. Ravi Kumar", role: "Director, Academics", bio: "Curriculum designer focused on inquiry-based, concept-first learning." },
   ];
   return (
-    <Section>
+    <Section id="leadership">
       <Reveal>
         <SectionHeading
           eyebrow="Leadership"
@@ -300,7 +301,7 @@ function VidvasWay() {
     { icon: Sparkles, t: "Personal mentorship", d: "A dedicated mentor for every child across the year." },
   ];
   return (
-    <Section className="bg-surface">
+    <Section id="way" className="bg-surface">
       <Reveal>
         <SectionHeading
           eyebrow="The Vidvas Way"
@@ -326,7 +327,7 @@ function Journey() {
     { y: "High School", d: "Board preparation, leadership, and career mentoring." },
   ];
   return (
-    <Section>
+    <Section id="journey">
       <Reveal>
         <SectionHeading
           eyebrow="The Vidvas Journey"
@@ -356,7 +357,7 @@ function Beyond() {
     { img: library, title: "Library & Reading", d: "10,000+ titles, weekly reading hour" },
   ];
   return (
-    <Section className="bg-surface">
+    <Section id="beyond" className="bg-surface">
       <Reveal>
         <SectionHeading
           eyebrow="Beyond the Classroom"
@@ -398,7 +399,7 @@ function Testimonials() {
     },
   ];
   return (
-    <Section>
+    <Section id="voices">
       <Reveal>
         <SectionHeading
           eyebrow="Parent Voices"
@@ -422,7 +423,7 @@ function Testimonials() {
 
 function HomeFAQ() {
   return (
-    <Section className="bg-surface">
+    <Section id="faq" className="bg-surface">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <SectionHeading
@@ -457,6 +458,7 @@ function HomePage() {
     <>
       <Hero />
       <StatsStrip />
+      <SectionNav items={pageSections["/"]} />
       <About />
       <VisionMission />
       <Leadership />
