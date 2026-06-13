@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vidvas School — Where Values Meet Excellence | Tirupati" },
+      { title: "Vidvas School — Where Values Meet Excellence" },
       {
         name: "description",
         content:
@@ -119,6 +119,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: site.name },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Vidvas School — Where Values Meet Excellence" },
+      { name: "twitter:title", content: "Vidvas School — Where Values Meet Excellence" },
+      { name: "description", content: "Vidvas Bloom is a modern, minimalistic school website showcasing academic excellence and holistic development." },
+      { property: "og:description", content: "Vidvas Bloom is a modern, minimalistic school website showcasing academic excellence and holistic development." },
+      { name: "twitter:description", content: "Vidvas Bloom is a modern, minimalistic school website showcasing academic excellence and holistic development." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dc2ec125-bba1-478e-9332-d37ffba0c36e/id-preview-36df49b3--042bd72d-a5cb-42b6-afd0-86c2c6345f22.lovable.app-1781320270054.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dc2ec125-bba1-478e-9332-d37ffba0c36e/id-preview-36df49b3--042bd72d-a5cb-42b6-afd0-86c2c6345f22.lovable.app-1781320270054.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
