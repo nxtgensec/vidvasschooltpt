@@ -37,7 +37,7 @@ export function PageHero({
           </Reveal>
         </div>
         <Reveal variant="scale" delay={250}>
-          <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated">
+          <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated md:aspect-[4/3] lg:aspect-[4/5]">
             <img src={image} alt={imageAlt} loading="eager" className="size-full object-cover" />
           </div>
         </Reveal>

@@ -118,7 +118,7 @@ function Hero() {
 
         <Reveal variant="scale" delay={400}>
           <div className="relative">
-            <div className="image-hover aspect-[4/5] rounded-[2rem] shadow-elevated">
+            <div className="image-hover aspect-[4/3] rounded-[2rem] shadow-elevated sm:aspect-[16/10] lg:aspect-[4/5]">
               <img
                 src={heroCampus}
                 alt="Vidvas School campus with students walking at golden hour"
