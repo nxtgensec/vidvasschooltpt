@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,7 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { StickyApply } from "@/components/site/StickyApply";
+import { MobileBottomNav } from "@/components/site/MobileBottomNav";
 import { site } from "@/lib/site-config";
 
 function NotFoundComponent() {
@@ -155,17 +156,42 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function HashScroller() {
+  const { pathname, hash } = useRouterState({ select: (s) => s.location });
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+    const id = hash.startsWith("#") ? hash.slice(1) : hash;
+    let tries = 0;
+    const tick = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      if (tries++ < 30) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [pathname, hash]);
+
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
       <SiteHeader />
-      <main className="pt-[72px]">
+      <HashScroller />
+      <main className="pt-16 pb-24 md:pt-[72px] lg:pb-0">
         <Outlet />
       </main>
       <SiteFooter />
-      <StickyApply />
+      <MobileBottomNav />
     </QueryClientProvider>
   );
 }
