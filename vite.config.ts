@@ -10,6 +10,13 @@ export default defineConfig({
     tsConfigPaths(),
     tanstackStart({
       server: { entry: "src/server.ts" },
+      // Pre-render every page to static HTML at build time.
+      // Works perfectly since this site has no server-side data or auth.
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        autoStaticPathsDiscovery: true,
+      },
     }),
     react(),
   ],
