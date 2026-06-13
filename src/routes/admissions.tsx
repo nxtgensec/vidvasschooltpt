@@ -9,8 +9,7 @@ import { FeatureCard } from "@/components/site/FeatureCard";
 import { FAQ } from "@/components/site/FAQ";
 import { CTABand } from "@/components/site/CTABand";
 import { CTALink } from "@/components/site/Button";
-import { SectionNav } from "@/components/site/SectionNav";
-import { mailto, tel, whatsapp, site, pageSections } from "@/lib/site-config";
+import { mailto, tel, whatsapp, site } from "@/lib/site-config";
 
 const faqItems = [
   { q: "When do admissions open at Vidvas School?", a: "Admissions for the 2026–27 academic year are open now. Early applications are recommended as seats fill quickly." },
@@ -55,8 +54,6 @@ function AdmissionsPage() {
         image={heroCampus}
         imageAlt="Vidvas School campus"
       />
-
-      <SectionNav items={pageSections["/admissions"]} />
 
       <Section id="why">
         <Reveal>

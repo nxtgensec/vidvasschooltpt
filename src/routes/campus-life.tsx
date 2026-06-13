@@ -13,9 +13,6 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { FeatureCard } from "@/components/site/FeatureCard";
-import { CTABand } from "@/components/site/CTABand";
-import { SectionNav } from "@/components/site/SectionNav";
-import { pageSections } from "@/lib/site-config";
 
 export const Route = createFileRoute("/campus-life")({
   head: () => ({
@@ -59,8 +56,6 @@ function CampusLifePage() {
         image={arts}
         imageAlt="Students performing at Vidvas"
       />
-
-      <SectionNav items={pageSections["/campus-life"]} />
 
       <Section id="facilities">
         <Reveal><SectionHeading eyebrow="Facilities" title="Built for every kind of learner." /></Reveal>
@@ -138,8 +133,6 @@ function CampusLifePage() {
           </div>
         </Reveal>
       </Section>
-
-      <CTABand title="Come experience a day at Vidvas" subtitle="Book a campus visit to see life at Vidvas firsthand." />
     </>
   );
 }

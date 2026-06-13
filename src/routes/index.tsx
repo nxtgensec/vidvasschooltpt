@@ -30,8 +30,7 @@ import { FeatureCard } from "@/components/site/FeatureCard";
 import { CTABand } from "@/components/site/CTABand";
 import { FAQ } from "@/components/site/FAQ";
 import { CTALink } from "@/components/site/Button";
-import { SectionNav } from "@/components/site/SectionNav";
-import { pageSections, whatsapp } from "@/lib/site-config";
+import { whatsapp } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -259,7 +258,15 @@ function Leadership() {
   const leaders = [
     { img: leader1, name: "Dr. Lakshmi Reddy", role: "Principal", bio: "Two decades of educational leadership across CBSE and State Board institutions." },
     { img: leader2, name: "Mr. Ravi Kumar", role: "Director, Academics", bio: "Curriculum designer focused on inquiry-based, concept-first learning." },
+    { img: leader1, name: "Ms. Priya Nair", role: "Head of Primary", bio: "Champion of play-based, child-led learning for ages 3–10." },
+    { img: leader2, name: "Mr. Anand Sharma", role: "Head of Sciences", bio: "Fifteen years building hands-on science culture in AP schools." },
+    { img: leader1, name: "Ms. Deepa Rao", role: "Dean of Student Affairs", bio: "Passionate about student well-being, mentorship and leadership." },
+    { img: leader2, name: "Mr. Suresh Babu", role: "Head of Technology", bio: "Robotics educator and coding curriculum architect since 2012." },
   ];
+
+  // Duplicate cards for seamless infinite loop
+  const all = [...leaders, ...leaders];
+
   return (
     <Section id="leadership">
       <Reveal>
@@ -269,23 +276,31 @@ function Leadership() {
           intro="Meet the people steering Vidvas with experience, warmth and conviction."
         />
       </Reveal>
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {leaders.map((l, i) => (
-          <Reveal key={l.name} delay={i * 100}>
-            <article className="card-hover overflow-hidden rounded-3xl border border-border bg-background shadow-soft">
-              <div className="grid sm:grid-cols-[200px_1fr]">
-                <div className="image-hover aspect-square sm:aspect-auto">
-                  <img src={l.img} alt={l.name} width={768} height={896} loading="lazy" className="size-full object-cover" />
-                </div>
-                <div className="flex flex-col justify-center gap-2 p-6 md:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-primary">{l.role}</p>
-                  <h3 className="font-serif text-2xl text-navy">{l.name}</h3>
-                  <p className="text-sm text-muted-foreground">{l.bio}</p>
-                </div>
+
+      {/* Marquee track */}
+      <div className="mt-12 overflow-hidden">
+        <div className="flex gap-5 marquee-track">
+          {all.map((l, i) => (
+            <article
+              key={i}
+              className="shrink-0 w-72 overflow-hidden rounded-3xl border border-border bg-background shadow-soft"
+            >
+              <div className="aspect-[3/2] overflow-hidden">
+                <img
+                  src={l.img}
+                  alt={l.name}
+                  loading="lazy"
+                  className="size-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-primary">{l.role}</p>
+                <h3 className="mt-1 font-serif text-xl text-navy">{l.name}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground">{l.bio}</p>
               </div>
             </article>
-          </Reveal>
-        ))}
+          ))}
+        </div>
       </div>
     </Section>
   );
@@ -458,7 +473,6 @@ function HomePage() {
     <>
       <Hero />
       <StatsStrip />
-      <SectionNav items={pageSections["/"]} />
       <About />
       <VisionMission />
       <Leadership />

@@ -10,8 +10,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { StatCounter } from "@/components/site/StatCounter";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { CTABand } from "@/components/site/CTABand";
-import { SectionNav } from "@/components/site/SectionNav";
-import { pageSections } from "@/lib/site-config";
 
 export const Route = createFileRoute("/achievements")({
   head: () => ({
@@ -37,8 +35,6 @@ function AchievementsPage() {
         image={events}
         imageAlt="Cultural performance at Vidvas School"
       />
-
-      <SectionNav items={pageSections["/achievements"]} />
 
       <section id="stats" className="border-y border-border bg-background">
         <div className="container-page grid grid-cols-2 gap-8 py-12 md:grid-cols-4 md:py-16">

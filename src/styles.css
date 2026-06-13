@@ -153,12 +153,12 @@
 /* Sub-nav scroll offset so section headings clear sticky header + sub-nav */
 section[id],
 div[id].section-anchor {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 100px;
 }
 @media (min-width: 768px) {
   section[id],
   div[id].section-anchor {
-    scroll-margin-top: 140px;
+    scroll-margin-top: 110px;
   }
 }
 
@@ -245,4 +245,23 @@ div[id].section-anchor {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1 !important; }
+}
+
+/* Teacher marquee — continuous left-to-right scroll */
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-ltr 32s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }

@@ -11,9 +11,6 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { FAQ } from "@/components/site/FAQ";
-import { CTABand } from "@/components/site/CTABand";
-import { SectionNav } from "@/components/site/SectionNav";
-import { pageSections } from "@/lib/site-config";
 
 const faqItems = [
   { q: "What curriculum does Vidvas School follow?", a: "Vidvas follows the Andhra Pradesh State Board curriculum in English medium, taught with a concept-first, inquiry-led approach." },
@@ -60,8 +57,6 @@ function AcademicsPage() {
         image={classroom}
         imageAlt="Vidvas School smart classroom"
       />
-
-      <SectionNav items={pageSections["/academics"]} />
 
       <Section id="philosophy">
         <Reveal>
@@ -215,8 +210,6 @@ function AcademicsPage() {
           <Reveal delay={100}><FAQ items={faqItems} /></Reveal>
         </div>
       </Section>
-
-      <CTABand title="See a Vidvas classroom in action" subtitle="Book a campus visit and sit in on a live lesson with our teachers." />
     </>
   );
 }

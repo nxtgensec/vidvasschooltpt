@@ -187,7 +187,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <SiteHeader />
       <HashScroller />
-      <main className="pt-16 pb-24 md:pt-[72px] lg:pb-0">
+      <main className="pt-14 pb-24 md:pt-16 lg:pb-0">
         <Outlet />
       </main>
       <SiteFooter />

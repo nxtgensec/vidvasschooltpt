@@ -26,7 +26,7 @@ export function Logo({ variant = "header", className }: Props) {
         height={64}
         className={cn(
           "object-contain",
-          isFooter ? "size-14 rounded-xl bg-background/95 p-1.5" : "size-10",
+          isFooter ? "size-14 rounded-2xl bg-background/95 p-1.5" : "size-10 rounded-2xl",
         )}
       />
       {isFooter ? (
@@ -39,7 +39,7 @@ export function Logo({ variant = "header", className }: Props) {
           </span>
         </span>
       ) : (
-        <span className="font-serif text-xl text-navy">
+        <span className="font-serif text-xl text-white">
           {site.name.replace(" School", "")}
         </span>
       )}
