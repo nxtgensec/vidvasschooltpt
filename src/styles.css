@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -34,8 +36,9 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-navy: var(--navy);
-  --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "DM Serif Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   --shadow-soft: 0 4px 16px -4px color-mix(in oklab, var(--navy) 8%, transparent);
   --shadow-elevated: 0 18px 40px -16px color-mix(in oklab, var(--navy) 18%, transparent);
   --shadow-glow: 0 12px 30px -8px color-mix(in oklab, var(--primary) 35%, transparent);
@@ -109,17 +112,47 @@
   }
   html {
     scroll-behavior: smooth;
+    font-feature-settings: "kern" 1, "liga" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3, h4 {
-    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.6;
     letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+  }
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  p {
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+  }
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .text-xl {
+    font-size: 1.25rem;
+    line-height: 1.5;
   }
   ::selection {
     background: color-mix(in oklab, var(--primary) 25%, transparent);
@@ -148,6 +181,39 @@
   .text-pretty { text-wrap: pretty; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  /* Professional Typography */
+  .font-display {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .font-heading {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .font-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.6;
+  }
+  .font-caption {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 /* Sub-nav scroll offset so section headings clear sticky header + sub-nav */
@@ -249,19 +315,40 @@ div[id].section-anchor {
 
 /* Teacher marquee — continuous left-to-right scroll */
 @keyframes marquee-ltr {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
 }
 
 .marquee-track {
-  animation: marquee-ltr 32s linear infinite;
+  animation: marquee-ltr 45s linear infinite;
   width: max-content;
+  display: flex;
 }
 
 .marquee-track:hover {
   animation-play-state: paused;
 }
 
+/* Right-to-left marquee */
+@keyframes marquee-rtl {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+.marquee-track-rtl {
+  animation: marquee-rtl 50s linear infinite;
+  width: max-content;
+  display: flex;
+}
+
+.marquee-track-rtl:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-rtl:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  .marquee-track, .marquee-track-rtl { animation: none; }
 }

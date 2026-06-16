@@ -39,8 +39,9 @@ export function Logo({ variant = "header", className }: Props) {
           </span>
         </span>
       ) : (
-        <span className="font-serif text-xl text-white">
-          {site.name.replace(" School", "")}
+        <span className="flex flex-col leading-none">
+          <span className="font-serif text-lg font-normal text-white">Vidvas</span>
+          <span className="font-serif text-lg font-normal text-white">School</span>
         </span>
       )}
     </Link>

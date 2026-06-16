@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Trophy, Medal, Music, Cpu, BookOpen, Award, Quote } from "lucide-react";
+import { Trophy, Medal, Music, Cpu, BookOpen, Award, Quote, Users } from "lucide-react";
 
 import events from "@/assets/events.jpg";
 import sports from "@/assets/sports.jpg";
@@ -25,7 +25,39 @@ export const Route = createFileRoute("/achievements")({
   component: AchievementsPage,
 });
 
+
+
 function AchievementsPage() {
+  const stories = [
+    { q: "Vidvas taught me to ask why before how. That changed everything in college.", a: "Aarav, Alumni · Class of 2023" },
+    { q: "The robotics lab is where I found my favourite hobby — and now my career path.", a: "Sneha, Class 10" },
+    { q: "I came in shy. I'm leaving as the head of the student council.", a: "Ravi, Class 10" },
+    { q: "Every teacher knew my name and my story. That made all the difference.", a: "Divya, Alumni · Class of 2024" },
+    { q: "Winning at nationals felt normal — because the school always pushed us beyond limits.", a: "Arun, Class 9" },
+    { q: "Vidvas gave me a stage. Now I perform at state-level events with full confidence.", a: "Kavya, Class 8" },
+  ];
+  const allStories = [...stories, ...stories];
+
+  const leaders = [
+    { name: "D. Jayachandra Reddy", role: "Chairman", desc: "Visionary leader with 30+ years in education" },
+    { name: "V. Subbanaidu", role: "Academic Director", desc: "PhD in Pedagogy, guiding excellence since 2015" },
+    { name: "A. Madana Mohan", role: "Admin Director", desc: "Operations expert ensuring seamless campus life" },
+    { name: "Dr. Priya Sharma", role: "Principal", desc: "Empowering students through innovative teaching" },
+    { name: "K. Venkatesh", role: "Sports Coordinator", desc: "Former national athlete, nurturing champions" },
+    { name: "S. Lakshmi", role: "Cultural Head", desc: "Celebrating creativity and artistic expression" },
+  ];
+  const allLeaders = [...leaders, ...leaders];
+
+  const parentVoices = [
+    { q: "The teachers don't just teach — they genuinely care. That's rare.", a: "Mrs. Radhika, Parent of Class 7" },
+    { q: "My son's confidence has grown beyond academics. Thank you, Vidvas.", a: "Mr. Suresh, Parent of Class 9" },
+    { q: "The focus on values alongside education is what sets Vidvas apart.", a: "Mrs. Anjali, Parent of Class 5" },
+    { q: "We moved to Tirupati for this school. Best decision we ever made.", a: "Mr. Ramesh, Parent of Class 10" },
+    { q: "Regular parent meetings and transparency make us feel part of the journey.", a: "Mrs. Kavitha, Parent of Class 6" },
+    { q: "Holistic education isn't a buzzword here — it's a lived reality.", a: "Mr. Prakash, Parent of Class 8" },
+  ];
+  const allParentVoices = [...parentVoices, ...parentVoices];
+
   return (
     <>
       <PageHero
@@ -35,6 +67,17 @@ function AchievementsPage() {
         image={events}
         imageAlt="Cultural performance at Vidvas School"
       />
+
+      {/* Tagline Banner — 2 lines with highlighted words */}
+      <section className="border-y border-border bg-gradient-to-br from-primary/5 via-accent/5 to-background py-12">
+        <div className="container-page text-center">
+          <h2 className="text-3xl font-bold leading-tight text-navy md:text-5xl lg:text-6xl">
+            Where <span className="font-['Comic_Sans_MS',cursive] text-primary">values</span> meet
+            <br />
+            <span className="font-['Comic_Sans_MS',cursive] text-accent">excellence</span>.
+          </h2>
+        </div>
+      </section>
 
       <section id="stats" className="border-y border-border bg-background">
         <div className="container-page grid grid-cols-2 gap-8 py-12 md:grid-cols-4 md:py-16">
@@ -102,50 +145,68 @@ function AchievementsPage() {
         </div>
       </Section>
 
+      {/* Leadership — left-to-right scrolling marquee */}
+      <Section id="leadership" className="bg-surface">
+        <Reveal>
+          <SectionHeading eyebrow="Leadership" title="Guided by experience. Led by passion." />
+        </Reveal>
+        <div className="mt-12 overflow-hidden">
+          <div className="flex gap-5 marquee-track">
+            {allLeaders.map((leader, i) => (
+              <div
+                key={i}
+                className="shrink-0 w-72 rounded-3xl border border-border bg-background p-6 shadow-soft"
+              >
+                <Users className="size-8 text-primary" />
+                <h3 className="mt-4 text-lg font-bold text-navy">{leader.name}</h3>
+                <p className="mt-1 text-sm font-medium text-accent">{leader.role}</p>
+                <p className="mt-3 text-sm text-muted-foreground">{leader.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Parent Voices — right-to-left scrolling marquee */}
+      <Section id="parent-voices">
+        <Reveal>
+          <SectionHeading eyebrow="Parent Voices" title="Trust built, one family at a time." />
+        </Reveal>
+        <div className="mt-12 overflow-hidden">
+          <div className="flex gap-5 marquee-track-rtl">
+            {allParentVoices.map((voice, i) => (
+              <figure
+                key={i}
+                className="shrink-0 w-80 rounded-3xl border border-border bg-background p-6 shadow-soft"
+              >
+                <Quote className="size-7 text-accent" />
+                <blockquote className="mt-4 text-sm text-navy">"{voice.q}"</blockquote>
+                <figcaption className="mt-5 text-xs font-medium text-muted-foreground">{voice.a}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Student Stories — right-to-left scrolling marquee */}
       <Section id="stories" className="bg-surface">
         <Reveal>
           <SectionHeading eyebrow="Student Stories" title="In their own words." />
         </Reveal>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {[
-            { q: "Vidvas taught me to ask why before how. That changed everything in college.", a: "Aarav, Alumni · Class of 2023" },
-            { q: "The robotics lab is where I found my favourite hobby — and now my career.", a: "Sneha, Class 10" },
-            { q: "I came in shy. I'm leaving as the head of the student council.", a: "Ravi, Class 10" },
-          ].map((t) => (
-            <Reveal key={t.a}>
-              <figure className="card-hover h-full rounded-3xl border border-border bg-background p-6 shadow-soft md:p-8">
+        <div className="mt-12 overflow-hidden">
+          <div className="flex gap-5 marquee-track-rtl">
+            {allStories.map((t, i) => (
+              <figure
+                key={i}
+                className="shrink-0 w-80 rounded-3xl border border-border bg-background p-6 shadow-soft"
+              >
                 <Quote className="size-7 text-accent" />
-                <blockquote className="mt-4 text-base text-navy">"{t.q}"</blockquote>
-                <figcaption className="mt-6 text-sm text-muted-foreground">{t.a}</figcaption>
+                <blockquote className="mt-4 text-sm text-navy">"{t.q}"</blockquote>
+                <figcaption className="mt-5 text-xs font-medium text-muted-foreground">{t.a}</figcaption>
               </figure>
-            </Reveal>
-          ))}
+            ))}
+          </div>
         </div>
-      </Section>
-
-      <Section id="milestones">
-        <Reveal>
-          <SectionHeading eyebrow="Milestones" title="The Vidvas timeline." />
-        </Reveal>
-        <ol className="mt-12 space-y-6 border-l border-border pl-6">
-          {[
-            { y: "2007", d: "Vidvas School founded with 80 students and 9 teachers." },
-            { y: "2012", d: "First Class X batch achieves 100% pass with multiple distinctions." },
-            { y: "2017", d: "Robotics and coding programmes introduced from Class 3." },
-            { y: "2022", d: "New smart campus inaugurated with science and tech labs." },
-            { y: "2025", d: "2,400+ students, faculty of 120, recognised as a leading school in Tirupati." },
-          ].map((m) => (
-            <Reveal key={m.y}>
-              <li className="relative">
-                <span className="absolute -left-[34px] top-1.5 grid size-4 place-items-center rounded-full border-2 border-primary bg-background">
-                  <span className="size-1.5 rounded-full bg-primary" />
-                </span>
-                <p className="font-serif text-2xl text-primary">{m.y}</p>
-                <p className="mt-1 text-sm text-navy md:text-base">{m.d}</p>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
       </Section>
 
       <CTABand title="Be part of the next Vidvas story" subtitle="Admissions are open for 2026–27." />

@@ -59,7 +59,7 @@ function SubNavRow({ pathname }: { pathname: string }) {
   };
 
   return (
-    <div className="border-t border-white/10">
+    <div className="hidden border-t border-white/10 lg:block">
       <div
         ref={listRef}
         className="container-page no-scrollbar flex items-center justify-center gap-1 overflow-x-auto py-1.5"

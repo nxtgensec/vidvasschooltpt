@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Phone, Mail, MapPin, MessageCircle, CalendarCheck, CheckCircle2, Sparkles, GraduationCap, Heart, ShieldCheck, Trophy } from "lucide-react";
+import { FileText, Phone, MapPin, MessageCircle, CalendarCheck, CheckCircle2, Sparkles, GraduationCap, Heart, ShieldCheck, Trophy } from "lucide-react";
 
 import heroCampus from "@/assets/hero-campus.jpg";
 import { PageHero } from "@/components/site/PageHero";
@@ -9,7 +9,7 @@ import { FeatureCard } from "@/components/site/FeatureCard";
 import { FAQ } from "@/components/site/FAQ";
 import { CTABand } from "@/components/site/CTABand";
 import { CTALink } from "@/components/site/Button";
-import { mailto, tel, whatsapp, site } from "@/lib/site-config";
+import { whatsapp, tel, site } from "@/lib/site-config";
 
 const faqItems = [
   { q: "When do admissions open at Vidvas School?", a: "Admissions for the 2026–27 academic year are open now. Early applications are recommended as seats fill quickly." },
@@ -163,8 +163,8 @@ function AdmissionsPage() {
           <Reveal variant="left">
             <SectionHeading eyebrow="Campus Visit" title="The best way to know Vidvas is to walk through it." intro="Book a guided tour at your convenience. Mornings and weekends are popular slots." />
             <div className="mt-6 flex flex-wrap gap-3">
-              <CTALink href={mailto("Campus visit request", "I'd like to schedule a campus visit at Vidvas School. Preferred date/time:")}>Book a Visit</CTALink>
-              <CTALink href={whatsapp("Hi, I'd like to schedule a campus visit at Vidvas School.")} external variant="outline" withArrow={false}>WhatsApp Us</CTALink>
+              <CTALink href={whatsapp("Hi, I'd like to schedule a campus visit at Vidvas School. Please let me know the available slots.")} external>Book a Visit</CTALink>
+              <CTALink href={whatsapp("Hi, I'd like to know more about admissions at Vidvas School.")} external variant="outline" withArrow={false}>WhatsApp Us</CTALink>
             </div>
           </Reveal>
           <Reveal variant="right">
@@ -180,12 +180,8 @@ function AdmissionsPage() {
                   <a href={tel} className="text-navy hover:text-primary">{site.phoneDisplay}</a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 size-5 shrink-0 text-primary" />
-                  <a href={mailto("Admissions enquiry")} className="text-navy hover:text-primary">{site.email}</a>
-                </li>
-                <li className="flex items-start gap-3">
                   <MessageCircle className="mt-0.5 size-5 shrink-0 text-secondary" />
-                  <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="text-navy hover:text-primary">WhatsApp us</a>
+                  <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="text-navy hover:text-primary">WhatsApp us — {site.phoneDisplay}</a>
                 </li>
               </ul>
             </div>

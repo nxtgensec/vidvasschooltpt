@@ -6,9 +6,9 @@ export const site = {
   location: "Tirupati, Andhra Pradesh",
   curriculum: "Andhra Pradesh State Board",
   email: "admissions@vidvasschool.com",
-  phone: "+91 90000 00000",
-  phoneDisplay: "+91 90000 00000",
-  whatsapp: "919000000000",
+  phone: "+91 93812 38189",
+  phoneDisplay: "+91 93812 38189",
+  whatsapp: "919381238189",
   address: "Vidvas School Campus, Tirupati, Andhra Pradesh 517501, India",
   social: {
     instagram: "https://instagram.com/vidvasschool",
