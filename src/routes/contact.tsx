@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MapPin, MessageCircle, Clock } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Clock, Mail } from "lucide-react";
 
 import heroCampus from "@/assets/hero-campus.jpg";
 
@@ -19,9 +19,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Vidvas School Tirupati" },
-      { name: "description", content: "Get in touch with Vidvas School, Tirupati. Call or WhatsApp us at +91 93812 38189 for admissions and campus visits." },
+      { name: "description", content: "Get in touch with Vidvas School, Tirupati. Call 0877 224 2277 or WhatsApp us at 7995550238 / 7995550239 for admissions and campus visits." },
       { property: "og:title", content: "Contact Vidvas School" },
-      { property: "og:description", content: "Reach our admissions team in Tirupati — call or WhatsApp +91 93812 38189." },
+      { property: "og:description", content: "Reach our admissions team in Tirupati — call or WhatsApp 0877 224 2277." },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -61,10 +61,18 @@ function ContactPage() {
     {
       icon: MessageCircle,
       t: "WhatsApp",
-      d: "Chat with our admissions team",
+      d: site.whatsappDisplay,
       href: whatsapp(),
       label: "Open chat",
       external: true,
+    },
+    {
+      icon: Mail,
+      t: "Email",
+      d: `${site.emailAdmissions}\n${site.emailContact}`,
+      href: `mailto:${site.emailAdmissions}`,
+      label: "Send email",
+      external: false,
     },
     {
       icon: Clock,
@@ -87,7 +95,7 @@ function ContactPage() {
       />
 
       <Section>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
           {cards.map((c, i) => (
             <Reveal key={c.t} delay={i * 70}>
               <a

@@ -24,7 +24,7 @@ import arts from "@/assets/arts.jpg";
 import robotics from "@/assets/robotics.jpg";
 import science from "@/assets/science.jpg";
 import events from "@/assets/events.jpg";
-import leader1 from "@/assets/leader-1.jpg";
+import chairmanPhoto from "@/assets/chairman.jpg";
 import leader2 from "@/assets/leader-2.jpg";
 import achievement1 from "@/assets/achievements/achievement-1.png";
 import achievement2 from "@/assets/achievements/achievement-2.png";
@@ -35,7 +35,6 @@ import achievement6 from "@/assets/achievements/achievement-6.png";
 
 import { Section, SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
-import { StatCounter } from "@/components/site/StatCounter";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { CTABand } from "@/components/site/CTABand";
 import { FAQ } from "@/components/site/FAQ";
@@ -76,6 +75,12 @@ const heroSlides = [
 
 function Hero() {
   const [current, setCurrent] = useState(0);
+  const stats = [
+    { value: 10, suffix: "+", label: "Years of excellence" },
+    { value: 2400, suffix: "+", label: "Students nurtured" },
+    { value: 50, suffix: "+", label: "Expert faculty" },
+    { value: 100, suffix: "%", label: "Class X excellence" },
+  ];
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -130,8 +135,8 @@ function Hero() {
       <div className="pointer-events-none absolute -right-32 bottom-20 size-[500px] rounded-full bg-accent/15 blur-[120px] animate-pulse" style={{ animationDuration: "10s", animationDelay: "2s" }} />
 
       {/* Main hero content */}
-      <div className="container-page relative z-20 flex min-h-screen items-center justify-center py-20 md:py-28 lg:py-36">
-        <div className="max-w-4xl text-center">
+      <div className="container-page relative z-20 flex min-h-screen items-center justify-center py-20 pb-28 md:py-28 md:pb-32 lg:py-32">
+        <div className="max-w-5xl text-center">
           {/* School branding */}
           <Reveal>
             <div className="inline-flex flex-col gap-2">
@@ -140,17 +145,11 @@ function Hero() {
               </h1>
               <div className="flex items-baseline justify-center gap-3 text-xl sm:text-2xl lg:text-3xl xl:text-4xl">
                 <span className="font-body font-light text-white/90">Where</span>
-                <span 
-                  style={{ fontFamily: "'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', cursive" }} 
-                  className="font-bold text-accent drop-shadow-[0_4px_12px_rgba(255,183,77,0.6)]"
-                >
+                <span className="font-display font-bold text-accent drop-shadow-[0_4px_12px_rgba(255,183,77,0.6)]">
                   values
                 </span>
                 <span className="font-body font-light text-white/90">meet</span>
-                <span 
-                  style={{ fontFamily: "'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', cursive" }} 
-                  className="font-bold text-accent drop-shadow-[0_4px_12px_rgba(255,183,77,0.6)]"
-                >
+                <span className="font-display font-bold text-accent drop-shadow-[0_4px_12px_rgba(255,183,77,0.6)]">
                   excellence
                 </span>
               </div>
@@ -197,31 +196,27 @@ function Hero() {
               </a>
             </div>
           </Reveal>
+
+          <Reveal delay={600}>
+            <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 rounded-3xl border border-white/15 bg-white/10 p-3 text-white shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-md md:grid-cols-4 md:gap-4 md:p-5">
+              {stats.map((s) => (
+                <div key={s.label} className="rounded-2xl border border-white/10 bg-white/10 px-3 py-4">
+                  <p className="font-display text-3xl text-white md:text-4xl">
+                    {s.value.toLocaleString()}
+                    {s.suffix}
+                  </p>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-white/75 md:text-sm">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </div>
 
       {/* Bottom gradient fade to next section */}
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background via-background/50 to-transparent" />
-    </section>
-  );
-}
-
-function StatsStrip() {
-  const stats = [
-    { value: 10, suffix: "+", label: "Years of excellence" },
-    { value: 2400, suffix: "+", label: "Students nurtured" },
-    { value: 50, suffix: "+", label: "Expert faculty" },
-    { value: 100, suffix: "%", label: "Class X excellence" },
-  ];
-  return (
-    <section className="border-y border-border bg-background">
-      <div className="container-page grid grid-cols-2 gap-8 py-12 md:grid-cols-4 md:py-16">
-        {stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 80}>
-            <StatCounter {...s} />
-          </Reveal>
-        ))}
-      </div>
     </section>
   );
 }
@@ -306,9 +301,9 @@ function VisionMission() {
 
 function Leadership() {
   const leaders = [
-    { img: leader1, name: "Jayachandra Reddy T", role: "Chairman", bio: "Visionary founder who built Vidvas from the ground up with a deep commitment to values-based education." },
+    { img: chairmanPhoto, name: "Jayachandra Reddy T", role: "Chairman", bio: "Visionary founder who built Vidvas from the ground up with a deep commitment to values-based education." },
     { img: leader2, name: "Subbanaidu V", role: "Academic Director", bio: "Drives academic excellence and curriculum innovation across all classes at Vidvas School." },
-    { img: leader1, name: "Madana Mohan A", role: "Admin Director", bio: "Ensures smooth daily operations and a safe, well-organised campus environment for every child." },
+    { img: leader2, name: "Madana Mohan A", role: "Admin Director", bio: "Ensures smooth daily operations and a safe, well-organised campus environment for every child." },
     { img: leader2, name: "Dr. Lakshmi Reddy", role: "Principal", bio: "Two decades of educational leadership across State Board and CBSE institutions in Andhra Pradesh." },
   ];
 
@@ -461,7 +456,7 @@ function Testimonials() {
     { q: "Vidvas doesn't just educate children, it nurtures their character and creativity.", a: "Sriram & Vani, Class 4 parents" },
     { q: "The transport system is safe and reliable. We never worry about our child's journey to school.", a: "Madhavi, Class 6 parent" },
   ];
-  const all = [...items, ...items, ...items];
+  const all = [...items, ...items];
 
   return (
     <Section id="voices">
@@ -471,9 +466,9 @@ function Testimonials() {
           title="Why families choose Vidvas."
         />
       </Reveal>
-      {/* Left-to-right scrolling marquee */}
+      {/* Right-to-left scrolling marquee */}
       <div className="mt-12 overflow-hidden">
-        <div className="flex gap-5 marquee-track">
+        <div className="flex gap-5 parent-voices-track">
           {all.map((t, i) => (
             <figure
               key={i}
@@ -635,7 +630,6 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <StatsStrip />
       <About />
       <VisionMission />
       <Leadership />

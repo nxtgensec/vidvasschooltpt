@@ -13,7 +13,6 @@ import { whatsapp, tel, site } from "@/lib/site-config";
 
 const faqItems = [
   { q: "When do admissions open at Vidvas School?", a: "Admissions for the 2026–27 academic year are open now. Early applications are recommended as seats fill quickly." },
-  { q: "What is the age criteria for Pre-Primary admission?", a: "Children should complete 3 years by 31st May of the admission year for Pre-KG. Specific age bands apply to each class." },
   { q: "Is there an entrance test?", a: "For Class 1 and above, we conduct a brief, age-appropriate interaction — never high-stakes. The aim is to know your child, not to filter." },
   { q: "What documents are required?", a: "Birth certificate, previous report card (if applicable), Aadhaar copy of child and parent, transfer certificate and passport-size photos." },
   { q: "Can I visit the campus before applying?", a: "Absolutely — we strongly encourage a campus visit. Walk through classrooms, meet our team and feel the Vidvas culture firsthand." },
@@ -23,7 +22,7 @@ export const Route = createFileRoute("/admissions")({
   head: () => ({
     meta: [
       { title: "Admissions — Vidvas School Tirupati | Apply 2026–27" },
-      { name: "description", content: "Admissions open at Vidvas School, Tirupati for 2026–27. Eligibility, documents required and a simple process for parents." },
+      { name: "description", content: "Admissions open at Vidvas School, Tirupati for 2026–27. Documents required, campus visit details and a simple process for parents." },
       { property: "og:title", content: "Admissions — Vidvas School Tirupati" },
       { property: "og:description", content: "Apply now for Pre-Primary through Class X at Vidvas School." },
       { property: "og:url", content: "/admissions" },
@@ -73,41 +72,6 @@ function AdmissionsPage() {
             </Reveal>
           ))}
         </div>
-      </Section>
-
-      <Section id="eligibility" className="bg-surface">
-        <Reveal>
-          <SectionHeading eyebrow="Eligibility" title="Age criteria by class." intro="As on 31st May of the admission year." />
-        </Reveal>
-        <Reveal delay={100}>
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-background shadow-soft">
-            <table className="w-full text-left text-sm md:text-base">
-              <thead className="bg-surface text-xs uppercase tracking-wider text-muted-foreground">
-                <tr>
-                  <th className="px-6 py-4">Class</th>
-                  <th className="px-6 py-4">Minimum age</th>
-                  <th className="px-6 py-4">Seats</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {[
-                  ["Pre-KG", "3 years", "Limited"],
-                  ["LKG", "4 years", "Open"],
-                  ["UKG", "5 years", "Open"],
-                  ["Class 1", "6 years", "Open"],
-                  ["Classes 2 – 9", "Age-appropriate", "Few seats"],
-                  ["Class 10", "Subject to records", "Closed"],
-                ].map(([cls, age, seats]) => (
-                  <tr key={cls}>
-                    <td className="px-6 py-4 font-medium text-navy">{cls}</td>
-                    <td className="px-6 py-4 text-muted-foreground">{age}</td>
-                    <td className="px-6 py-4 text-muted-foreground">{seats}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Reveal>
       </Section>
 
       <Section id="documents">
@@ -181,7 +145,7 @@ function AdmissionsPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <MessageCircle className="mt-0.5 size-5 shrink-0 text-secondary" />
-                  <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="text-navy hover:text-primary">WhatsApp us — {site.phoneDisplay}</a>
+                  <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="text-navy hover:text-primary">WhatsApp us — {site.whatsappDisplay}</a>
                 </li>
               </ul>
             </div>

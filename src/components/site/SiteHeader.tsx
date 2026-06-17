@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
-import { nav } from "@/lib/site-config";
+import { Menu, X, ArrowRight, ChevronDown, MessageCircle, Phone } from "lucide-react";
+import { nav, tel, whatsapp } from "@/lib/site-config";
 import { pageSections } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
@@ -109,11 +109,11 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-primary shadow-elevated">
       {/* ── Top bar ── */}
-      <div className="container-page flex h-14 items-center justify-between gap-6 md:h-16">
+      <div className="container-page grid h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 sm:px-5 md:h-16 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-4">
         <Logo variant="header" />
 
         {/* Desktop nav — centred */}
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 lg:flex">
+        <nav className="hidden min-w-0 items-center justify-center gap-0.5 overflow-hidden lg:flex">
           {nav.map((item) => {
             const active =
               pathname === item.to ||
@@ -123,7 +123,7 @@ export function SiteHeader() {
                 key={item.label}
                 to={item.to}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
+                  "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 lg:px-2.5 lg:text-xs xl:px-3.5 xl:text-sm",
                   active
                     ? "bg-white text-primary shadow-sm"
                     : "text-white/80 hover:bg-white/10 hover:text-white",
@@ -135,10 +135,26 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center justify-end gap-1 sm:gap-1.5 md:gap-2">
+          <a
+            href={tel}
+            aria-label="Call Vidvas School"
+            className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white hover:text-primary sm:size-9"
+          >
+            <Phone className="size-4" />
+          </a>
+          <a
+            href={whatsapp()}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp Vidvas School"
+            className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white hover:text-primary sm:size-9"
+          >
+            <MessageCircle className="size-4" />
+          </a>
           <Link
             to="/admissions"
-            className="hidden items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-white hover:text-primary md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-white hover:text-primary xl:inline-flex"
           >
             Admissions Open
             <ArrowRight className="size-4" aria-hidden />
@@ -147,7 +163,7 @@ export function SiteHeader() {
             type="button"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((v) => !v)}
-            className="grid size-9 place-items-center rounded-full border border-white/20 bg-white/10 text-white lg:hidden"
+            className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white sm:size-9 lg:hidden"
           >
             {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
@@ -225,6 +241,24 @@ export function SiteHeader() {
             >
               Admissions Open <ArrowRight className="size-4" />
             </Link>
+            <div className="grid grid-cols-2 gap-2 pt-2">
+              <a
+                href={tel}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+              >
+                <Phone className="size-4" />
+                Call
+              </a>
+              <a
+                href={whatsapp()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+              >
+                <MessageCircle className="size-4" />
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       )}

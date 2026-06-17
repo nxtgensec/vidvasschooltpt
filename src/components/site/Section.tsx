@@ -50,7 +50,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="text-balance text-3xl font-normal leading-[1.1] text-navy md:text-4xl lg:text-5xl">
+      <h2 className="font-display text-balance text-3xl font-bold leading-[1.1] text-navy md:text-4xl lg:text-5xl">
         {title}
       </h2>
       {intro && (

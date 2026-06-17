@@ -17,7 +17,7 @@ const linkGroups = [
     title: "Admissions",
     links: [
       { label: "Why Vidvas", to: "/admissions", hash: "why" },
-      { label: "Eligibility", to: "/admissions", hash: "eligibility" },
+      { label: "Documents", to: "/admissions", hash: "documents" },
       { label: "Process", to: "/admissions", hash: "process" },
       { label: "Campus Visit", to: "/admissions", hash: "visit" },
     ],
@@ -98,7 +98,10 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 size-4 shrink-0 text-accent" />
-                <a href={mailto("Enquiry from website")} className="hover:text-background">{site.email}</a>
+                <span className="flex flex-col gap-1">
+                  <a href={mailto("Admissions enquiry")} className="hover:text-background">{site.emailAdmissions}</a>
+                  <a href={`mailto:${site.emailContact}`} className="hover:text-background">{site.emailContact}</a>
+                </span>
               </li>
             </ul>
           </div>

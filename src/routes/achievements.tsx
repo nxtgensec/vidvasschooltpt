@@ -72,9 +72,9 @@ function AchievementsPage() {
       <section className="border-y border-border bg-gradient-to-br from-primary/5 via-accent/5 to-background py-12">
         <div className="container-page text-center">
           <h2 className="text-3xl font-bold leading-tight text-navy md:text-5xl lg:text-6xl">
-            Where <span className="font-['Comic_Sans_MS',cursive] text-primary">values</span> meet
+            Where <span className="font-display font-bold text-primary">values</span> meet
             <br />
-            <span className="font-['Comic_Sans_MS',cursive] text-accent">excellence</span>.
+            <span className="font-display font-bold text-accent">excellence</span>.
           </h2>
         </div>
       </section>
