@@ -1,13 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, GraduationCap, FileText, Trophy, Sparkles } from "lucide-react";
+import { Home, GraduationCap, FileText, Trophy, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const items = [
   { to: "/", label: "Home", icon: Home },
-  { to: "/academics", label: "Academics", icon: GraduationCap },
-  { to: "/admissions", label: "Admissions", icon: FileText },
-  { to: "/achievements", label: "Achievements", icon: Trophy },
-  { to: "/campus-life", label: "Campus", icon: Sparkles },
+  { to: "/academics", label: "Learn", icon: GraduationCap },
+  { to: "/admissions", label: "Apply", icon: FileText },
+  { to: "/achievements", label: "Awards", icon: Trophy },
+  { to: "/campus-life", label: "Campus", icon: Building2 },
 ] as const;
 
 export function MobileBottomNav() {
@@ -16,10 +16,10 @@ export function MobileBottomNav() {
   return (
     <nav
       aria-label="Primary mobile"
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur-xl shadow-[0_-8px_24px_-12px_color-mix(in_oklab,var(--navy)_15%,transparent)] lg:hidden"
-      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 lg:hidden"
+      style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
-      <ul className="container-page grid grid-cols-5 gap-1 px-2 py-1.5">
+      <ul className="mx-auto grid max-w-md grid-cols-5 gap-1 rounded-[1.35rem] border border-border/80 bg-background/95 p-1.5 shadow-[0_-10px_35px_-18px_color-mix(in_oklab,var(--navy)_35%,transparent),0_10px_35px_-22px_color-mix(in_oklab,var(--navy)_30%,transparent)] backdrop-blur-xl">
         {items.map((item) => {
           const active =
             item.to === "/"
@@ -31,23 +31,23 @@ export function MobileBottomNav() {
               <Link
                 to={item.to}
                 className={cn(
-                  "flex flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-2 text-[10px] font-medium leading-tight transition-colors",
+                  "group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-1.5 text-[10px] font-semibold leading-none transition-all",
                   active
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-navy",
+                    ? "bg-primary text-primary-foreground shadow-glow"
+                    : "text-muted-foreground hover:bg-muted hover:text-navy",
                 )}
               >
                 <span
                   className={cn(
-                    "grid size-9 place-items-center rounded-xl transition-all",
+                    "grid size-6 place-items-center rounded-xl transition-all",
                     active
-                      ? "bg-primary/12 text-primary scale-105"
-                      : "text-current",
+                      ? "scale-105 text-primary-foreground"
+                      : "text-current group-hover:scale-105",
                   )}
                 >
-                  <Icon className="size-[18px]" />
+                  <Icon className="size-[17px]" />
                 </span>
-                <span className="truncate">{item.label}</span>
+                <span className="max-w-full truncate">{item.label}</span>
               </Link>
             </li>
           );
